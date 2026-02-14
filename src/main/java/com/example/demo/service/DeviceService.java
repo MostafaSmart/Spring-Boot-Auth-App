@@ -77,4 +77,7 @@ public class DeviceService {
             device.setArea(area);
         }
     }
+    public boolean validateDevice(String serialNumber) {
+        return repository.existsBySerialNumber(serialNumber);
+    }
 }

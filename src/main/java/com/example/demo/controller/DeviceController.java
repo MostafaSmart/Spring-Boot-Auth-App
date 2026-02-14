@@ -13,6 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DeviceController {
     private final DeviceService service;
+    private final com.example.demo.service.AttendanceService attendanceService;
 
     @GetMapping
     public ResponseEntity<List<Device>> getAll() {
@@ -38,5 +39,16 @@ public class DeviceController {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+    @PostMapping("/push-logs")
+    public ResponseEntity<String> pushLogs(@RequestBody com.example.demo.common.dto.DeviceLogDto logDto) {
+        // Validate Device
+        if (!service.validateDevice(logDto.getSerialNumber())) {
+            return ResponseEntity.badRequest().body("Invalid Device Serial Number");
+        }
+
+        // Process Log
+        attendanceService.processRawLog(logDto.getEmployeeCode(), logDto.getLogTime(), logDto.getSerialNumber());
+        return ResponseEntity.ok("Log Received");
     }
 }

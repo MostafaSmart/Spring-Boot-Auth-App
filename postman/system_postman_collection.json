@@ -1,0 +1,1958 @@
+{
+  "info": {
+    "_postman_id": "8a7d2e1b-4c5d-4e9f-8a12-3b4c5d6e7f8a",
+    "name": "BioTime Clone - API",
+    "description": " نظام الحضور والانصراف",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{myToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "مجموعة طلبات لإدارة المناطق (Areas)",
+      "item": [
+        {
+          "name": "إضافة منطقة جديدة",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"areaName\": \"الفرع الرئيسي - الرياض\",\n    \"locationDetails\": \"شارع العليا، مبنى رقم 10\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/areas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "areas"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"areaName\": \"الفرع الرئيسي - الرياض\",\n    \"locationDetails\": \"شارع العليا، مبنى رقم 10\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/areas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "areas"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"areaName\": \"الفرع الرئيسي - الرياض\",\n    \"locationDetails\": \"شارع العليا، مبنى رقم 10\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "عرض جميع المناطق",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/areas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "areas"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/areas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "areas"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"areaName\": \"الفرع الرئيسي - الرياض\",\n        \"locationDetails\": \"شارع العليا، مبنى رقم 10\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "عرض منطقة بواسطة ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/areas/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "areas",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/areas/1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "areas",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"areaName\": \"الفرع الرئيسي - الرياض\",\n    \"locationDetails\": \"شارع العليا، مبنى رقم 10\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "تحديث بيانات منطقة",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"areaName\": \"فرع جدة المعدل\",\n    \"locationDetails\": \"طريق الملك، برج الشاشة\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/areas/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "areas",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"areaName\": \"فرع جدة المعدل\",\n    \"locationDetails\": \"طريق الملك، برج الشاشة\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/areas/1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "areas",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"areaName\": \"فرع جدة المعدل\",\n    \"locationDetails\": \"طريق الملك، برج الشاشة\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "حذف منطقة",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/areas/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "areas",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/areas/1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "areas",
+                    "1"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Departments (الأقسام)",
+      "item": [
+        {
+          "name": "إضافة قسم جديد",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"deptName\": \"الموارد البشرية\",\n    \"parentDepartment\": null \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "response": [
+              {
+                "name": "Success",
+                "originalRequest": {
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"deptName\": \"الموارد البشرية\",\n    \"parentDepartment\": null \n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "{{baseUrl}}/departments",
+                    "host": [
+                      "{{baseUrl}}"
+                    ],
+                    "path": [
+                      "departments"
+                    ]
+                  }
+                },
+                "status": "OK",
+                "code": 200,
+                "_postman_previewlanguage": "json",
+                "header": [],
+                "cookie": [],
+                "body": "{\n    \"id\": 1,\n    \"deptName\": \"الموارد البشرية\",\n    \"parentDepartment\": null\n}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/departments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "departments"
+              ]
+            }
+          }
+        },
+        {
+          "name": "إضافة قسم فرعي",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"deptName\": \"التوظيف\",\n    \"parentDepartment\": { \"id\": 1 }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "response": [
+              {
+                "name": "Success",
+                "originalRequest": {
+                  "method": "POST",
+                  "header": [],
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"deptName\": \"التوظيف\",\n    \"parentDepartment\": { \"id\": 1 }\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  },
+                  "url": {
+                    "raw": "{{baseUrl}}/departments",
+                    "host": [
+                      "{{baseUrl}}"
+                    ],
+                    "path": [
+                      "departments"
+                    ]
+                  }
+                },
+                "status": "OK",
+                "code": 200,
+                "_postman_previewlanguage": "json",
+                "header": [],
+                "cookie": [],
+                "body": "{\n    \"id\": 2,\n    \"deptName\": \"التوظيف\",\n    \"parentDepartment\": {\n        \"id\": 1,\n        \"deptName\": \"الموارد البشرية\"\n    }\n}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/departments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "departments"
+              ]
+            }
+          }
+        },
+        {
+          "name": "عرض جميع الأقسام",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/departments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "departments"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "url": {
+                  "raw": "{{baseUrl}}/departments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "departments"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"deptName\": \"الموارد البشرية\",\n        \"parentDepartment\": null\n    },\n    {\n        \"id\": 2,\n        \"deptName\": \"التوظيف\",\n        \"parentDepartment\": {\n            \"id\": 1,\n            \"deptName\": \"الموارد البشرية\"\n        }\n    }\n]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Employees (الموظفين)",
+      "item": [
+        {
+          "name": "إضافة موظف جديد",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"employeeCode\": \"EMP-1001\",\n    \"name\": \"أحمد محمد\",\n    \"status\": \"Active\",\n    \"area\": { \"id\": 1 },\n    \"department\": { \"id\": 2 }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/employees",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "employees"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"employeeCode\": \"EMP-1001\",\n    \"name\": \"أحمد محمد\",\n    \"status\": \"Active\",\n    \"area\": { \"id\": 1 },\n    \"department\": { \"id\": 2 }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/employees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"employeeCode\": \"EMP-1001\",\n    \"name\": \"أحمد محمد\",\n    \"status\": \"Active\",\n    \"area\": { \"id\": 1, \"areaName\": \"Main Branch\" },\n    \"department\": { \"id\": 2, \"deptName\": \"IT\" }\n}"
+            }
+          ]
+        },
+        {
+          "name": "عرض جميع الموظفين",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/employees",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "employees"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "url": {
+                  "raw": "{{baseUrl}}/employees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"employeeCode\": \"EMP-1001\",\n        \"name\": \"أحمد محمد\",\n        \"status\": \"Active\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "عرض موظف بواسطة ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/employees/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "employees",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "url": {
+                  "raw": "{{baseUrl}}/employees/1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"employeeCode\": \"EMP-1001\",\n    \"name\": \"أحمد محمد\",\n    \"status\": \"Active\",\n    \"area\": { \"id\": 1 },\n    \"department\": { \"id\": 2 }\n}"
+            }
+          ]
+        },
+        {
+          "name": "تحديث بيانات موظف",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"أحمد محمد علي\",\n    \"status\": \"Active\",\n    \"area\": { \"id\": 1 },\n    \"department\": { \"id\": 1 }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/employees/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "employees",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"أحمد محمد علي\",\n    \"status\": \"Active\",\n    \"area\": { \"id\": 1 },\n    \"department\": { \"id\": 1 }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/employees/1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"employeeCode\": \"EMP-1001\",\n    \"name\": \"أحمد محمد علي\",\n    \"status\": \"Active\",\n    \"area\": { \"id\": 1 },\n    \"department\": { \"id\": 1 }\n}"
+            }
+          ]
+        },
+        {
+          "name": "حذف موظف",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/employees/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "employees",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "DELETE",
+                "url": {
+                  "raw": "{{baseUrl}}/employees/1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "employees",
+                    "1"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Schedules (جداول العمل)",
+      "item": [
+        {
+          "name": "ربط موظف بوردية (Create Schedule)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"employee\": { \"id\": 1 },\n    \"shift\": { \"id\": 1 },\n    \"dayOfWeek\": \"SUNDAY\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/schedules",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "schedules"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"employee\": { \"id\": 1 },\n    \"shift\": { \"id\": 1 },\n    \"dayOfWeek\": \"SUNDAY\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/schedules",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "schedules"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"employeeName\": \"أحمد محمد\",\n    \"employeeId\": 1,\n    \"shiftName\": \"Morning Shift\",\n    \"shiftId\": 1,\n    \"dayOfWeek\": \"SUNDAY\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "عرض جميع جداول العمل",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/schedules",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "schedules"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/schedules",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "schedules"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"employeeName\": \"أحمد محمد\",\n        \"shiftName\": \"Morning Shift\",\n        \"dayOfWeek\": \"SUNDAY\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "عرض جدول عمل بواسطة ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/schedules/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "schedules",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/schedules/1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "schedules",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"employeeName\": \"أحمد محمد\",\n    \"shiftName\": \"Morning Shift\",\n    \"dayOfWeek\": \"SUNDAY\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "تحديث جدول عمل",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"employee\": { \"id\": 1 },\n    \"shift\": { \"id\": 2 },\n    \"dayOfWeek\": \"MONDAY\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/schedules/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "schedules",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"employee\": { \"id\": 1 },\n    \"shift\": { \"id\": 2 },\n    \"dayOfWeek\": \"MONDAY\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/schedules/1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "schedules",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"employeeName\": \"أحمد محمد\",\n    \"shiftName\": \"Evening Shift\",\n    \"dayOfWeek\": \"MONDAY\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "حذف جدول عمل",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/schedules/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "schedules",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/schedules/1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "schedules",
+                    "1"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shifts (الورديات)",
+      "item": [
+        {
+          "name": "إضافة وردية جديدة",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"shiftName\": \"الوردية الصباحية\",\n    \"startTime\": \"08:00:00\",\n    \"endTime\": \"16:00:00\",\n    \"lateThreshold\": 15,\n    \"earlyLeaveThreshold\": 15\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/shifts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "shifts"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"shiftName\": \"الوردية الصباحية\",\n    \"startTime\": \"08:00:00\",\n    \"endTime\": \"16:00:00\",\n    \"lateThreshold\": 15,\n    \"earlyLeaveThreshold\": 15\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/shifts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shifts"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"shiftName\": \"الوردية الصباحية\",\n    \"startTime\": \"08:00:00\",\n    \"endTime\": \"16:00:00\",\n    \"lateThreshold\": 15,\n    \"earlyLeaveThreshold\": 15\n}"
+            }
+          ]
+        },
+        {
+          "name": "عرض جميع الورديات",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/shifts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "shifts"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/shifts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shifts"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"shiftName\": \"الوردية الصباحية\",\n        \"startTime\": \"08:00:00\",\n        \"endTime\": \"16:00:00\",\n        \"lateThreshold\": 15,\n        \"earlyLeaveThreshold\": 15\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "عرض وردية بواسطة ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/shifts/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "shifts",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/shifts/1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shifts",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"shiftName\": \"الوردية الصباحية\",\n    \"startTime\": \"08:00:00\",\n    \"endTime\": \"16:00:00\",\n    \"lateThreshold\": 15,\n    \"earlyLeaveThreshold\": 15\n}"
+            }
+          ]
+        },
+        {
+          "name": "تحديث وردية",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"shiftName\": \"الوردية المسائية\",\n    \"startTime\": \"16:00:00\",\n    \"endTime\": \"00:00:00\",\n    \"lateThreshold\": 10,\n    \"earlyLeaveThreshold\": 5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/shifts/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "shifts",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"shiftName\": \"الوردية المسائية\",\n    \"startTime\": \"16:00:00\",\n    \"endTime\": \"00:00:00\",\n    \"lateThreshold\": 10,\n    \"earlyLeaveThreshold\": 5\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/shifts/1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shifts",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"shiftName\": \"الوردية المسائية\",\n    \"startTime\": \"16:00:00\",\n    \"endTime\": \"00:00:00\",\n    \"lateThreshold\": 10,\n    \"earlyLeaveThreshold\": 5\n}"
+            }
+          ]
+        },
+        {
+          "name": "حذف وردية",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/shifts/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "shifts",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/shifts/1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shifts",
+                    "1"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Auth (المصادقة)",
+      "item": [
+        {
+          "name": "تسجيل مستخدم جديد",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"firstname\": \"Admin\",\n    \"lastname\": \"User\",\n    \"email\": \"admin@example.com\",\n    \"password\": \"password\",\n    \"role\": \"ADMIN\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"firstname\": \"Admin\",\n    \"lastname\": \"User\",\n    \"email\": \"admin@example.com\",\n    \"password\": \"password\",\n    \"role\": \"ADMIN\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/register",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "register"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"firstname\": \"Admin\",\n    \"lastname\": \"User\",\n    \"email\": \"admin@example.com\",\n    \"role\": \"ADMIN\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "تسجيل الدخول",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"password\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"password\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTY5ODQwMzIwMCwiZXhwIjoxNjk4NDg5NjAwfQ.signature\",\n    \"user\": {\n        \"id\": 1,\n        \"firstname\": \"Admin\",\n        \"lastname\": \"User\",\n        \"email\": \"admin@example.com\",\n        \"role\": \"ADMIN\"\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Devices (الأجهزة)",
+      "item": [
+        {
+          "name": "عرض جميع الأجهزة",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/devices",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "devices"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/devices",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "devices"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"serialNumber\": \"SN123456\",\n        \"deviceName\": \"Main Gate\",\n        \"ipAddress\": \"192.168.1.201\",\n        \"port\": 4370,\n        \"status\": \"ONLINE\",\n        \"area\": { \"id\": 1, \"areaName\": \"Main Branch\" }\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "إضافة جهاز جديد",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"serialNumber\": \"SN123456\",\n    \"deviceName\": \"Main Gate\",\n    \"ipAddress\": \"192.168.1.201\",\n    \"port\": 4370,\n    \"status\": \"ONLINE\",\n    \"area\": { \"id\": 1 }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/devices",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "devices"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"serialNumber\": \"SN123456\",\n    \"deviceName\": \"Main Gate\",\n    \"ipAddress\": \"192.168.1.201\",\n    \"port\": 4370,\n    \"status\": \"ONLINE\",\n    \"area\": { \"id\": 1 }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/devices",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "devices"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"serialNumber\": \"SN123456\",\n    \"deviceName\": \"Main Gate\",\n    \"ipAddress\": \"192.168.1.201\",\n    \"port\": 4370,\n    \"status\": \"ONLINE\",\n    \"area\": { \"id\": 1 }\n}"
+            }
+          ]
+        },
+        {
+          "name": "إرسال سجلات (Simulate Logs)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"serialNumber\": \"SN123456\",\n    \"employeeCode\": \"EMP-1001\",\n    \"logTime\": \"2023-10-27T08:00:00\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/devices/push-logs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "devices",
+                "push-logs"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"serialNumber\": \"SN123456\",\n    \"employeeCode\": \"EMP-1001\",\n    \"logTime\": \"2023-10-27T08:00:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/devices/push-logs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "devices",
+                    "push-logs"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": "Log Received"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Leave Types (أنواع الإجازات)",
+      "item": [
+        {
+          "name": "عرض أنواع الإجازات",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/leave-types",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "leave-types"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/leave-types",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "leave-types"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"typeName\": \"Annual Leave\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "إضافة نوع إجازة",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"typeName\": \"Annual Leave\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/leave-types",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "leave-types"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"typeName\": \"Annual Leave\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/leave-types",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "leave-types"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"typeName\": \"Annual Leave\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Leave Requests (طلبات الإجازة)",
+      "item": [
+        {
+          "name": "تقديم طلب إجازة",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"employee\": { \"id\": 1 },\n    \"leaveType\": { \"id\": 1 },\n    \"startDate\": \"2023-10-28\",\n    \"endDate\": \"2023-10-29\",\n    \"status\": \"PENDING\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/leave-requests",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "leave-requests"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"employee\": { \"id\": 1 },\n    \"leaveType\": { \"id\": 1 },\n    \"startDate\": \"2023-10-28\",\n    \"endDate\": \"2023-10-29\",\n    \"status\": \"PENDING\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/leave-requests",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "leave-requests"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"employee\": { \"id\": 1, \"name\": \"Ahmed\" },\n    \"leaveType\": { \"id\": 1, \"typeName\": \"Annual Leave\" },\n    \"startDate\": \"2023-10-28\",\n    \"endDate\": \"2023-10-29\",\n    \"status\": \"PENDING\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "تغيير حالة الطلب",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/leave-requests/1/status?status=APPROVED",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "leave-requests",
+                "1",
+                "status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "APPROVED"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/leave-requests/1/status?status=APPROVED",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "leave-requests",
+                    "1",
+                    "status"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "APPROVED"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"employee\": { \"id\": 1, \"name\": \"Ahmed\" },\n    \"leaveType\": { \"id\": 1, \"typeName\": \"Annual Leave\" },\n    \"startDate\": \"2023-10-28\",\n    \"endDate\": \"2023-10-29\",\n    \"status\": \"APPROVED\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Reports (التقارير)",
+      "item": [
+        {
+          "name": "Monthly Summary",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reports/monthly-summary?startDate=2023-10-01&endDate=2023-10-31",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reports",
+                "monthly-summary"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-10-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-10-31"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/reports/monthly-summary?startDate=2023-10-01&endDate=2023-10-31",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reports",
+                    "monthly-summary"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2023-10-01"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2023-10-31"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "[\n    {\n        \"employeeId\": 1,\n        \"employeeName\": \"Ahmed Mohamed\",\n        \"departmentName\": \"IT\",\n        \"totalWorkHours\": 160.5,\n        \"lateMinutes\": 45,\n        \"earlyOutMinutes\": 10,\n        \"overtimeMinutes\": 120,\n        \"presentDays\": 22,\n        \"absentDays\": 0,\n        \"leaveDays\": 1\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Daily Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reports/daily-details?startDate=2023-10-01&endDate=2023-10-31&page=0&size=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reports",
+                "daily-details"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-10-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-10-31"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/reports/daily-details?startDate=2023-10-01&endDate=2023-10-31&page=0&size=10",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reports",
+                    "daily-details"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2023-10-01"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"content\": [\n        {\n            \"date\": \"2023-10-01\",\n            \"employeeName\": \"Ahmed Mohamed\",\n            \"departmentName\": \"IT\",\n            \"checkIn\": \"2023-10-01T08:05:00\",\n            \"checkOut\": \"2023-10-01T16:10:00\",\n            \"status\": \"PRESENT\",\n            \"lateMinutes\": 5,\n            \"earlyOutMinutes\": 0,\n            \"overtimeMinutes\": 10,\n            \"workDurationMinutes\": 485\n        }\n    ],\n    \"pageable\": {\n        \"pageNumber\": 0,\n        \"pageSize\": 10\n    },\n    \"totalElements\": 1,\n    \"totalPages\": 1\n}"
+            }
+          ]
+        },
+        {
+          "name": "Exception Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reports/exceptions?startDate=2023-10-01&endDate=2023-10-31",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reports",
+                "exceptions"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-10-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-10-31"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/reports/exceptions?startDate=2023-10-01&endDate=2023-10-31",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reports",
+                    "exceptions"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2023-10-01"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"content\": [\n        {\n            \"date\": \"2023-10-02\",\n            \"employeeName\": \"Ahmed Mohamed\",\n            \"departmentName\": \"IT\",\n            \"exceptionType\": \"LATE\",\n            \"checkIn\": \"2023-10-02T08:30:00\",\n            \"checkOut\": \"2023-10-02T16:00:00\",\n            \"details\": \"Late by 30 mins\"\n        }\n    ],\n    \"pageable\": {\n        \"pageNumber\": 0,\n        \"pageSize\": 10\n    },\n    \"totalElements\": 1,\n    \"totalPages\": 1\n}"
+            }
+          ]
+        },
+        {
+          "name": "Download Daily Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reports/download/daily-details?startDate=2023-10-01&endDate=2023-10-31",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reports",
+                "download",
+                "daily-details"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2023-10-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2023-10-31"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/reports/download/daily-details?startDate=2023-10-01&endDate=2023-10-31",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reports",
+                    "download",
+                    "daily-details"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2023-10-01"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                },
+                {
+                  "key": "Content-Disposition",
+                  "value": "attachment; filename=daily_report.xlsx"
+                }
+              ],
+              "cookie": [],
+              "body": "<Binary File Content>"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api/v1",
+      "type": "string"
+    }
+  ]
+}

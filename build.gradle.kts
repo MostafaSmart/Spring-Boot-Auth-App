@@ -36,6 +36,9 @@ dependencies {
     runtimeOnly  ("io.jsonwebtoken:jjwt-jackson:0.11.5")
     compileOnly  ("org.projectlombok:lombok")
     annotationProcessor  ("org.projectlombok:lombok")
+    
+    // Apache POI for Excel
+    implementation("org.apache.poi:poi-ooxml:5.2.3")
 }
 
 tasks.withType<Test> {
