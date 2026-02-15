@@ -12,6 +12,6 @@ import java.util.Optional;
 public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
     boolean existsByEmployeeAndDayOfWeek(Employee employee, DayOfWeek dayOfWeek);
 
-    @Query("SELECT s FROM Schedule s WHERE s.employee.employeeCode = :employeeCode AND s.dayOfWeek = :dayOfWeek")
+    @Query("SELECT s FROM Schedule s WHERE s.employee.employeeCode = :employeeCode")
     Optional<Schedule> findByEmployeeAndDayOfWeek(@Param("employeeCode") String employeeCode, @Param("dayOfWeek") java.time.DayOfWeek dayOfWeek);
 }

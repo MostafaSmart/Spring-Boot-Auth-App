@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.common.dto.DeviceLogDto;
 import com.example.demo.entity.Exceptions.LeaveRequest;
 import com.example.demo.entity.Exceptions.LeaveRequestStatus;
 import com.example.demo.entity.organizational.Employee;
@@ -9,6 +10,7 @@ import com.example.demo.entity.transactions.AttendanceLog;
 import com.example.demo.entity.transactions.DailyAttendanceReport;
 import com.example.demo.repository.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +23,8 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
+
 public class AttendanceService {
 
     private final AttendanceLogRepository attendanceLogRepository;
@@ -46,12 +50,13 @@ public class AttendanceService {
 
     private void processEmployeeAttendance(Employee emp, LocalDate date) {
         // 1. Check if employee has a schedule for this day
+        log.warn("No schedule found for employee {} on {}", emp.getEmployeeCode(), date.getDayOfWeek());
         Optional<Schedule> scheduleOpt = scheduleRepository.findByEmployeeAndDayOfWeek(emp.getEmployeeCode(), date.getDayOfWeek());
-        
+
         if (scheduleOpt.isEmpty()) {
             // No schedule (Weekend or Off day)
             // Optionally we can check if they came to work anyway
-            return; 
+            return;
         }
 
         Schedule schedule = scheduleOpt.get();
@@ -67,7 +72,7 @@ public class AttendanceService {
         DailyAttendanceReport report = dailyAttendanceReportRepository
                 .findByEmployee_EmployeeCodeAndDate(emp.getEmployeeCode(), date)
                 .orElse(new DailyAttendanceReport());
-        
+
         report.setEmployee(emp);
         report.setDate(date);
 
@@ -84,14 +89,14 @@ public class AttendanceService {
             report.setEarlyOutMinutes(0);
             report.setOvertimeMinutes(0);
             report.setWorkDurationMinutes(0L);
-            
+
             dailyAttendanceReportRepository.save(report);
             return;
         }
 
         // 4. Logic for PRESENT / MISSING_OUT
         report.setCheckIn(checkInOpt.get());
-        
+
         if (checkOutOpt.isEmpty() || checkInOpt.get().equals(checkOutOpt.get())) {
             // Only one punch or check-in == check-out (bounced)
             report.setStatus("MISSING_OUT");
@@ -112,7 +117,7 @@ public class AttendanceService {
     private void calculateMetrics(DailyAttendanceReport report, Shift shift, LocalDate date) {
         LocalDateTime checkIn = report.getCheckIn();
         LocalDateTime checkOut = report.getCheckOut();
-        
+
         LocalDateTime shiftStart = date.atTime(shift.getStartTime());
         LocalDateTime shiftEnd = date.atTime(shift.getEndTime());
 
@@ -143,12 +148,12 @@ public class AttendanceService {
     }
 
     @Transactional
-    public void processRawLog(String employeeCode, LocalDateTime logTime, String deviceId) {
+    public void processRawLog(DeviceLogDto logDto) {
         AttendanceLog log = new AttendanceLog();
-        log.setEmployeeCode(employeeCode);
-        log.setLogTime(logTime);
-        log.setDeviceId(deviceId);
-        log.setPunchType("UNKNOWN"); // Determine logic if needed
+        log.setEmployeeCode(logDto.getEmployeeCode());
+        log.setLogTime(logDto.getLogTime());
+        log.setDeviceId(logDto.getSerialNumber());
+        log.setPunchType(logDto.getPunchType()); // Determine logic if needed
         attendanceLogRepository.save(log);
     }
 }

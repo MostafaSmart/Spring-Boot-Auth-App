@@ -8,4 +8,6 @@ public class DeviceLogDto {
     private String serialNumber;
     private String employeeCode;
     private LocalDateTime logTime;
+    private String punchType;
+
 }

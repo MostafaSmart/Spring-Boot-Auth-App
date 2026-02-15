@@ -12,7 +12,9 @@ import com.example.demo.repository.ShiftRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalTime;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -110,19 +112,59 @@ public class ScheduleService {
         }
     }
 
+    public List<ScheduleResponse> getAllGroupedByEmployee() {
+        List<Schedule> allSchedules = repository.findAll();
+
+        // 1. التجميع بناءً على مفتاح فريد (الموظف + الوردية)
+        Map<String, List<Schedule>> grouped = allSchedules.stream()
+                .collect(Collectors.groupingBy(s ->
+                        s.getEmployee().getId() + "-" + s.getShift().getId()
+                ));
+
+        // 2. تحويل الخريطة (Map) إلى قائمة الرد المطلوبة (List<ScheduleResponse>)
+        return grouped.values().stream().map(schedules -> {
+            // نأخذ أول سجل لاستخلاص بيانات الموظف والوردية (كلهم متشابهون في نفس المجموعة)
+            Schedule first = schedules.get(0);
+
+            return ScheduleResponse.builder()
+                    .employeeId(first.getEmployee().getId())
+                    .employeeName(first.getEmployee().getName())
+                    .employeeCode(first.getEmployee().getEmployeeCode())
+                    .shiftId(first.getShift().getId())
+                    .shiftName(first.getShift().getShiftName())
+                    .shiftStart(first.getShift().getStartTime().toString())
+                    .shiftEnd(first.getShift().getEndTime().toString())
+                    // تجميع الأيام من كافة سجلات هذه المجموعة
+                    .daysOfWeek(schedules.stream()
+                            .map(Schedule::getDayOfWeek)
+                            .sorted() // اختياري: لترتيب الأيام (الأحد، الاثنين...)
+                            .collect(Collectors.toList()))
+                    .build();
+        }).collect(Collectors.toList());
+    }
+
     private ScheduleResponse fromTable(Schedule item) {
         String employeeName = (item.getEmployee() != null) ? item.getEmployee().getName() : "Unknown";
         String shiftName = (item.getShift() != null) ? item.getShift().getShiftName() : "Unknown";
         Long employeeId = (item.getEmployee() != null) ? item.getEmployee().getId() : null;
-        Long shiftId = (item.getShift() != null) ? item.getShift().getId() : null;
+        String employeeCode = (item.getEmployee() != null) ? item.getEmployee().getEmployeeCode() : null;
 
+        Long shiftId = (item.getShift() != null) ? item.getShift().getId() : null;
+        LocalTime start = (item.getShift() != null) ? item.getShift().getStartTime() : null;
+        LocalTime end = (item.getShift() != null) ? item.getShift().getEndTime() : null;
+
+        assert end != null;
         return new ScheduleResponse(
-                item.getId(),
-                employeeId,
-                employeeName,
-                shiftId,
-                shiftName,
-                item.getDayOfWeek()
+//                item.getId(),
+//                employeeId,
+//                employeeName,
+//                employeeCode,
+//                shiftId,
+//                shiftName,
+//                start.toString(),
+//                end.toString(),
+//                item.getDayOfWeek()
         );
     }
+
 }

@@ -1,6 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.common.dto.DeviceLogDto;
 import com.example.demo.entity.Device.Device;
+import com.example.demo.entity.Device.DeviceResponse;
+import com.example.demo.entity.other.StringResponse;
 import com.example.demo.service.DeviceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,22 +19,22 @@ public class DeviceController {
     private final com.example.demo.service.AttendanceService attendanceService;
 
     @GetMapping
-    public ResponseEntity<List<Device>> getAll() {
+    public ResponseEntity<List<DeviceResponse>> getAll() {
         return ResponseEntity.ok(service.getAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Device> getById(@PathVariable Long id) {
+    public ResponseEntity<DeviceResponse> getById(@PathVariable Long id) {
         return ResponseEntity.ok(service.getById(id));
     }
 
     @PostMapping
-    public ResponseEntity<Device> create(@RequestBody Device device) {
+    public ResponseEntity<DeviceResponse> create(@RequestBody Device device) {
         return ResponseEntity.ok(service.save(device));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Device> update(@PathVariable Long id, @RequestBody Device device) {
+    public ResponseEntity<DeviceResponse> update(@PathVariable Long id, @RequestBody Device device) {
         return ResponseEntity.ok(service.update(id, device));
     }
 
@@ -41,14 +44,14 @@ public class DeviceController {
         return ResponseEntity.noContent().build();
     }
     @PostMapping("/push-logs")
-    public ResponseEntity<String> pushLogs(@RequestBody com.example.demo.common.dto.DeviceLogDto logDto) {
+    public ResponseEntity<StringResponse> pushLogs(@RequestBody DeviceLogDto logDto) {
         // Validate Device
         if (!service.validateDevice(logDto.getSerialNumber())) {
-            return ResponseEntity.badRequest().body("Invalid Device Serial Number");
+            return ResponseEntity.badRequest().body(new StringResponse("Invalid Device Serial Number"));
         }
 
         // Process Log
-        attendanceService.processRawLog(logDto.getEmployeeCode(), logDto.getLogTime(), logDto.getSerialNumber());
-        return ResponseEntity.ok("Log Received");
+        attendanceService.processRawLog(logDto);
+        return ResponseEntity.ok(new StringResponse("OK"));
     }
 }

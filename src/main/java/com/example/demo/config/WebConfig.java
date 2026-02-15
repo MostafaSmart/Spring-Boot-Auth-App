@@ -10,9 +10,11 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // السماح لكل المسارات
-                .allowedOrigins("http://localhost:5174") // عنوان تطبيق React
+                .allowedOrigins("http://localhost:5173") // عنوان تطبيق React
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
     }
 }
+
+

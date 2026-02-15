@@ -17,7 +17,7 @@ public class ScheduleController {
 
     @GetMapping
     public ResponseEntity<List<ScheduleResponse>> getAll() {
-        return ResponseEntity.ok(service.getAll());
+        return ResponseEntity.ok(service.getAllGroupedByEmployee());
     }
 
     @GetMapping("/{id}")

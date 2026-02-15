@@ -3,6 +3,8 @@ package com.example.demo.controller;
 import com.example.demo.common.dto.DailyDetailDto;
 import com.example.demo.common.dto.ExceptionReportDto;
 import com.example.demo.common.dto.MonthlySummaryDto;
+import com.example.demo.entity.other.StringResponse;
+import com.example.demo.service.AttendanceService;
 import com.example.demo.service.ReportService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
@@ -15,6 +17,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.ByteArrayInputStream;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -22,7 +28,7 @@ import java.util.List;
 @RequestMapping("/api/v1/reports")
 @RequiredArgsConstructor
 public class ReportController {
-
+    private final AttendanceService attendanceService;
     private final ReportService reportService;
 
     @GetMapping("/daily-details")
@@ -61,7 +67,7 @@ public class ReportController {
     ) {
         return ResponseEntity.ok(reportService.getExceptionReport(startDate, endDate, employeeId, areaId, departmentId, pageable));
     }
-
+    @IgnoreApiResponse // أضف هذا السطر هنا
     @GetMapping("/download/daily-details")
     public ResponseEntity<InputStreamResource> downloadDailyReport(
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
@@ -83,4 +89,14 @@ public class ReportController {
                 .contentType(MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"))
                 .body(new InputStreamResource(in));
     }
+
+
+    @PostMapping("/calculate")
+    public ResponseEntity<StringResponse> triggerCalculation(@RequestParam("date") String dateStr) {
+        LocalDate date = LocalDate.parse(dateStr);
+        attendanceService.calculateDailyAttendance(date);
+        return ResponseEntity.ok(new StringResponse("تم بدء عملية الاحتساب للتاريخ: " + dateStr));
+    }
 }
+
+
